@@ -1,5 +1,7 @@
 # EAVES
 
+一个基于 python 的轻量级比赛创建辅助工具。
+
 ## Updates
 
 ## Authors
