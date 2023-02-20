@@ -20,7 +20,13 @@ def genContest():
 def genProblem():
 	if len(sys.argv) == 2:
 		base.missingParameter()
-	log.error(u'还没写，咕咕咕～')
+	for i in range(2, len(sys.argv)):
+		dirPath = os.getcwd() + '/' + sys.argv[i]
+		if os.path.exists(dirPath):
+			log.info(u"该文件夹已经存在")
+		else:
+			log.info(u"创建文件夹" + dirPath)
+			os.makedirs(dirPath)
 
 if __name__ == '__main__':
 	base.init()
