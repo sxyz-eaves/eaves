@@ -35,6 +35,13 @@ def missingParameter():
 	)
 	exit()
 
+
+FORMAT = "%(asctime)s %(thread)d %(message)s"
+DATEFMT = "[%Y-%m-%d %H:%M:%S]"
+logging.basicConfig(level=logging.INFO,
+                    format=FORMAT,
+                    datefmt=DATEFMT,
+                    filename='eaves.log')
 log = logging.getLogger()
 log.setLevel(logging.DEBUG)
 # 使用 log 输出日志。
