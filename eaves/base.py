@@ -39,7 +39,7 @@ def custom_conf():
     get_tool_conf()
     c = env_conf['file_log'] if 'file_log' in env_conf else {}
     file_log = logging.FileHandler(
-        c['path'] if 'path' in c else 'tuack.log',
+        c['path'] if 'path' in c else 'eaves.log',
         mode=c['mode'] if 'mode' in c else 'a',
         encoding=c['encoding'] if 'encoding' in c else None
     )
@@ -74,7 +74,7 @@ def custom_conf():
 def init():
     custom_conf()
     log.info(
-        u'脚本：%s, 工作目录：%s, 参数：[%s]。开始与 %s' % (
+        u'开始程序\n   脚本：%s\n   工作目录：%s\n   参数：[%s]\n   开始于 %s' % (
             __main__.__file__, os.getcwd(), str(
                 sys.argv[1:]), str(datetime.datetime.now())
         )
