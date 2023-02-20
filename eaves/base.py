@@ -29,6 +29,7 @@ def settingLog():
 
 
 def init():
+    settingLog()
     log.info(
         u'开始程序\n   脚本：%s\n   工作目录：%s\n   参数：[%s]\n   开始于 %s' % (
             __main__.__file__, os.getcwd(), str(
