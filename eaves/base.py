@@ -53,7 +53,7 @@ log = logging.getLogger()
 def init():
 	settingLog()
 	log.info(
-		u'脚本：%s, 工作目录：%s, 参数：[%s]。开始与 %s' % (
+		u'脚本：%s, 工作目录：%s, 参数：[%s]。开始于 %s' % (
 			__main__.__file__, os.getcwd(), str(
 				sys.argv[1:]), str(datetime.datetime.now())
 		)
