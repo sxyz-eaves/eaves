@@ -7,6 +7,10 @@ import logging
 import datetime
 import __main__
 
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
+# 使用 log 输出日志。
+
 def init():
 	log.info(
 		u'脚本：%s, 工作目录：%s, 参数：[%s]。开始与 %s' % (
@@ -23,12 +27,8 @@ def missingParameter():
 	# 发现缺少必要参数，直接停止运行程序。
 	log.error(
 		u'缺少必要参数，使用 \'eaves.%s -h\' 查询使用方式。' % (
-			os.splitext(os.path.split(__main__.file)[1])[0]
+			os.splitext(os.path.split(__main__.__file__)[1])[0]
 			# 把文件名切出来
 		)
 	)
 	exit()
-
-log = logging.getLogger()
-log.setLevel(logging.DEBUG)
-# 使用 log 输出日志。

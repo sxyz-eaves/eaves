@@ -15,7 +15,7 @@ def help():
 def genContest():
 	if len(sys.argv) == 2:
 		base.missingParameter()
-	shutil.copytree(os.path.split(__file__) + '/' + 'SampleContest', os.getcwd() + '/' + sys.argv[2])
+	shutil.copytree(os.path.split(__file__)[0] + '/' + 'SampleContest', os.getcwd() + '/' + sys.argv[2])
 
 def genProblem():
 	if len(sys.argv) == 2:
