@@ -16,6 +16,15 @@ SXYZ-EAVES 团队
 - 测试猿 syf2008
 - 不知道什么人 \_edge\_
 
+## TodoList
+
+- [ ] 支持生成比赛文件夹
+- [ ] 支持生成题目文件夹
+- [ ] 支持根据 Markdown 生成 $\LaTeX$ 题面
+- [ ] 支持测试出题人、验题人的代码
+- [ ] 支持导出到 LemonLime
+- [ ] 支持导出到 CCR-Plus
+
 ## Copyright
 
 版权所有 (C) 2023 SXYZ-EAVES 团队，保留一切权利。  
