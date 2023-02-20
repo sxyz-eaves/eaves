@@ -9,6 +9,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",  # 模块详细介绍格式
     # url="https://github.com/sxyz-eaves/eaves",  # 模块github地址
     packages=setuptools.find_packages(),  # 自动找到项目中导入的模块
+    package_data=[
+        "eaves/SampleContest/**"
+    ],
     # 模块相关的元数据
     classifiers=[
         "Programming Language :: Python :: 3",
