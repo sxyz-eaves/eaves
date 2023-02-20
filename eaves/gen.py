@@ -6,6 +6,7 @@ import sys, os, shutil
 from . import base
 from .base import log
 
+
 def help():
 	log.info(u'Usage')
 	log.info(u'  help: 查询使用方法')
