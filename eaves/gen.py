@@ -9,8 +9,8 @@ from .base import log
 def help():
 	log.info(u'Usage')
 	log.info(u'  -h: 查询使用方法')
-	log.info(u'  Contest <name>: 创建一个比赛文件夹，文件夹名为 <name>')
-	log.info(u'  Problem <name1> <name2> ... : 创建一个若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
+	log.info(u'  contest <name>: 创建一个比赛文件夹，文件夹名为 <name>')
+	log.info(u'  problem <name1> <name2> ... : 创建一个若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
 
 def genContest():
 	if len(sys.argv) == 2:
@@ -32,4 +32,4 @@ if __name__ == '__main__':
 	elif sys.argv[1] == 'problem':
 		genProblem()
 	else:
-		base.unknownParameter(sys.argv[0])
+		base.unknownParameter(sys.argv[1])
