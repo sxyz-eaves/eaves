@@ -4,10 +4,8 @@
 
 import sys
 import os
-import shutil
 import logging
 import datetime
-import json
 import __main__
 
 
@@ -31,7 +29,6 @@ def settingLog():
 
 
 def init():
-    custom_conf()
     log.info(
         u'开始程序\n   脚本：%s\n   工作目录：%s\n   参数：[%s]\n   开始于 %s' % (
             __main__.__file__, os.getcwd(), str(
@@ -59,13 +56,3 @@ def missingParameter():
 
 log = logging.getLogger()
 # 使用 log 输出日志。
-
-
-def init():
-    settingLog()
-    log.info(
-        u'脚本：%s, 工作目录：%s, 参数：[%s]。开始与 %s' % (
-            __main__.__file__, os.getcwd(), str(
-                sys.argv[1:]), str(datetime.datetime.now())
-        )
-    )
