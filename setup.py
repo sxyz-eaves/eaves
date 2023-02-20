@@ -1,13 +1,11 @@
 import setuptools
-with open("README.md", "r") as fileDescription:
-    longDescription = fileDescription.read(),
 setuptools.setup(
     name = "eaves",
     version = "0.0.1",
     author = "sxyz-eaves",
     author_email = "467557146@qq.com",
     description = "一个基于 python 的轻量级比赛创建辅助工具。",
-    long_description = longDescription,
+    long_description = "一个基于 python 的轻量级比赛创建辅助工具。",
     long_description_content_type="text/markdown",  # 模块详细介绍格式
     # url="https://github.com/wupeiqi/fucker",  # 模块github地址
     packages=setuptools.find_packages(),  # 自动找到项目中导入的模块
