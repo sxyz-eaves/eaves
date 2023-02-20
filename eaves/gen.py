@@ -8,7 +8,7 @@ from .base import log
 
 def help():
 	log.info(u'Usage')
-	log.info(u'  -h: 查询使用方法')
+	log.info(u'  help: 查询使用方法')
 	log.info(u'  contest <name>: 创建一个比赛文件夹，文件夹名为 <name>')
 	log.info(u'  problem <name1> <name2> ... : 创建一个若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
 
@@ -20,12 +20,13 @@ def genContest():
 def genProblem():
 	if len(sys.argv) == 2:
 		base.missingParameter()
+	log.error(u'还没写，咕咕咕～')
 
 if __name__ == '__main__':
 	base.init()
 	if len(sys.argv) == 1:
 		base.missingParameter()
-	if sys.argv[1] == '-h':
+	if sys.argv[1] == 'help':
 		help()
 	elif sys.argv[1] == 'contest':
 		genContest()
