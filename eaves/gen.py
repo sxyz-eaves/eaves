@@ -20,15 +20,11 @@ def help():
 def genContest():
 	if len(sys.argv) > 2:
 		base.extraParameter(sys.argv[2:])
-
-	shutil.copyfile(os.path.split(__file__)[
-					0] + '/SampleContest/conf.yaml', os.getcwd() + '/conf.yaml')
+	shutil.copyfile(os.path.split(__file__)[0] + '/SampleContest/conf.yaml', os.getcwd() + '/conf.yaml')
 	log.info(u'创建 /conf.yaml')
-	shutil.copyfile(os.path.split(__file__)[
-					0] + '/SampleContest/precautions.md', os.getcwd() + '/precautions.md')
+	shutil.copyfile(os.path.split(__file__)[0] + '/SampleContest/precautions.md', os.getcwd() + '/precautions.md')
 	log.info(u'创建 /precautions.md')
-	shutil.copyfile(os.path.split(__file__)[
-					0] + '/SampleContest/.gitignore', os.getcwd() + '/.gitignore')
+	shutil.copyfile(os.path.split(__file__)[0] + '/SampleContest/.gitignore', os.getcwd() + '/.gitignore')
 	log.info(u'创建 /.gitignore')
 	# 将 SampleContest 中的文件全都迁移过来。
 
