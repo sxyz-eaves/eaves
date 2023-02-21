@@ -11,7 +11,7 @@ from .base import log
 def help():
 	license()
 	log.info(u'Usage')
-	log.info(u'  help: 查询使用方法')
+	log.info(u'  help: 显示版权声明及本帮助列表')
 	log.info(u'  contest: 将当前文件夹设置为比赛文件夹并生成文件。')
 	log.info(u'  problem <name1> <name2> ... : 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
 
@@ -60,11 +60,6 @@ def genProblem():
 		except FileExistsError:
 			# 捕获 文件已经存在 错误
 			log.error(u'文件夹 %s 创建失败。' % (problem))
-
-def genLatex():
-    # 从 md 文件生成 Latex
-	if len(sys.argv) == 2:
-		base.missingParameter()
 
 if __name__ == '__main__':
 	base.init()
