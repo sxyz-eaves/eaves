@@ -21,15 +21,6 @@ def settingLog():
 	)
 	# file_log 将日志输出到文件中
 	log.addHandler(file_log)
-	file_log = logging.FileHandler(filename='eaves.log', mode='a')
-	file_log.setLevel(logging.INFO)
-	file_log.setFormatter(
-		logging.Formatter(
-			'[%(levelname).1s]%(filename)s:%(funcName)s:%(lineno)d:%(message)s'
-		)
-	)
-	# file_log 将日志输出到文件中
-	log.addHandler(file_log)
 	bash_log = logging.StreamHandler()
 	bash_log.setLevel(logging.DEBUG)
 	bash_log.setFormatter(logging.Formatter('[%(levelname).1s]%(message)s'))
@@ -40,8 +31,7 @@ def init():
 	settingLog()
 	log.info(
 		u'开始程序\n   脚本：%s\n   工作目录：%s\n   参数：%s\n   开始于 %s' % (
-			__main__.__file__, os.getcwd(), str(
-				sys.argv[1:]), str(datetime.datetime.now())
+			__main__.__file__, os.getcwd(), str(sys.argv[1:]), str(datetime.datetime.now())
 		)
 	)
 	print(u'版权声明')
