@@ -25,6 +25,7 @@ def genContest():
                         os.getcwd() + '/' + sys.argv[2])
     except FileExistsError:
         log.error(u"该文件夹已经存在")
+        # 这里会把子文件复制进去吗?
 
 
 def genProblem():
@@ -35,6 +36,7 @@ def genProblem():
         try:
             log.info(u"正在创建文件夹 " + dirPath)
             os.makedirs(dirPath)
+            log.warn(u"未完成!将不会创建子文件")
         except FileExistsError:
             log.error(u"该文件夹已经存在")
 
