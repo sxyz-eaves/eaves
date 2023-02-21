@@ -8,14 +8,11 @@ import shutil
 from . import base
 from .base import log
 
-
 def help():
 	log.info(u'Usage')
 	log.info(u'  help: 查询使用方法')
 	log.info(u'  contest: 将当前文件夹设置为比赛文件夹并生成文件。')
-	log.info(
-		u'  problem <name1> <name2> ... : 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
-
+	log.info(u'  problem <name1> <name2> ... : 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
 
 def genContest():
 	if len(sys.argv) > 2:
@@ -28,11 +25,9 @@ def genContest():
 	log.info(u'创建 /.gitignore')
 	# 将 SampleContest 中的文件全都迁移过来。
 
-
 def genProblem():
 	if len(sys.argv) == 2:
 		base.missingParameter()
-
 	sample = os.path.split(__file__)[0] + '/SampleProblem'
 	# 获取 SampleProblem 路径
 	for problem in sys.argv[2:]:
@@ -64,7 +59,6 @@ def genProblem():
 		except FileExistsError:
 			# 捕获 文件已经存在 错误
 			log.error(u'文件夹 %s 创建失败。' % (problem))
-
 
 if __name__ == '__main__':
 	base.init()
