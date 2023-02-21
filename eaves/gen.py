@@ -14,22 +14,23 @@ def help():
     log.info(u'  help: 查询使用方法')
     log.info(u'  contest: 将当前文件夹设置为比赛文件夹并生成文件。')
     log.info(
-        u'  problem <name1> <name2> ... : 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
+        u'  problem <name1> <name2> ... :' +
+        u' 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
 
 
 def genContest():
     if len(sys.argv) > 2:
         base.extraParameter(sys.argv[3:])
 
-    shutil.copyfile(os.path.split(__file__)[
-                    0] + '/SampleContest/conf.yaml', os.getcwd() + '/conf.yaml')
+    shutil.copyfile(os.path.split(__file__)[0] + '/SampleContest/conf.yaml',
+                    os.getcwd() + '/conf.yaml')
     log.info(u'创建 /conf.yaml')
     shutil.copyfile(
         os.path.split(__file__)[0] + '/SampleContest/precautions.md',
         os.getcwd() + '/precautions.md')
     log.info(u'创建 /precautions.md')
-    shutil.copyfile(os.path.split(__file__)[
-                    0] + '/SampleContest/.gitignore', os.getcwd() + '/.gitignore')
+    shutil.copyfile(os.path.split(__file__)[0] + '/SampleContest/.gitignore',
+                    os.getcwd() + '/.gitignore')
     log.info(u'创建 /.gitignore')
     # 将 SampleContest 中的文件全都迁移过来。
 
@@ -44,7 +45,8 @@ def genProblem():
         dirPath = os.getcwd() + '/' + problem
         # 获取当前路径
         if os.path.exists(dirPath):
-            ifDeleteFolder = input('文件夹' + problem + '已经存在，是否删除原文件夹[Y/n]？')
+            ifDeleteFolder = input('文件夹' + problem +
+                                   '已经存在，是否删除原文件夹[Y/n]？')
             if ifDeleteFolder != 'n' and ifDeleteFolder != 'n':
                 shutil.rmtree(dirPath)
                 log.info(u'创建题目文件夹 %s' % (problem))
@@ -63,11 +65,12 @@ def genProblem():
         problemConf.write('checker: False\n')
         problemConf.close()
         # 写入 conf.yaml
-        os.system('mkdir ' + dirPath + '/data')
-        os.system('mkdir ' + dirPath + '/sample')
-        os.system('mkdir ' + dirPath + '/tables')
-        os.system('mkdir ' + dirPath + '/users')
+        os.mkdir(dirPath + '/data')
+        os.mkdir(dirPath + '/sample')
+        os.mkdir(dirPath + '/tables')
+        os.mkdir(dirPath + '/users')
         # 创建目录
+
 
 if __name__ == '__main__':
     base.init()
