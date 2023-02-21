@@ -67,6 +67,7 @@ def genProblem():
         os.system('mkdir ' + dirPath + '/sample')
         os.system('mkdir ' + dirPath + '/tables')
         os.system('mkdir ' + dirPath + '/users')
+        # 创建目录
 
 if __name__ == '__main__':
     base.init()
