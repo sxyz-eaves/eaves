@@ -56,7 +56,7 @@ def missingParameter():
 	# 发现缺少必要参数，直接停止运行程序。
 	log.error(
 		u'缺少必要参数，程序停止运行。请使用 \'eaves.%s help\' 查询使用方式。' % (
-			os.splitext(os.path.split(__main__.__file__)[1])[0]
+			os.path.splitext(os.path.split(__main__.__file__)[1])[0]
 			# 把文件名切出来
 		)
 	)
