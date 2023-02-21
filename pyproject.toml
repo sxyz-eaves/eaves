@@ -1,6 +1,6 @@
 [project]
 name = "eaves"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Mine_King", email="1395354790@qq.com" },
 ]

@@ -4,4 +4,5 @@ subtitle: 比赛简称
 author: 出题人
 start time: 2023 年 2 月 19 日 00:00
 end time: 2023 年 2 月 9 日 00:01
-problems: {}
+problems: []
+compile: -std=c++14 -O2
