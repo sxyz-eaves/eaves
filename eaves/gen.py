@@ -60,6 +60,11 @@ def genProblem():
 			# 捕获 文件已经存在 错误
 			log.error(u'文件夹 %s 创建失败。' % (problem))
 
+def genLatex():
+    # 从 md 文件生成 Latex
+	if len(sys.argv) == 2:
+		base.missingParameter()
+
 if __name__ == '__main__':
 	base.init()
 	if len(sys.argv) == 1:
