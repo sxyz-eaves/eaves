@@ -54,10 +54,10 @@ def genProblem():
 			problemConf.write('checker: False\n')
 			problemConf.close()
 			# 写入 conf.yaml
-			os.system('mkdir ' + dirPath + '/data')
-			os.system('mkdir ' + dirPath + '/sample')
-			os.system('mkdir ' + dirPath + '/tables')
-			os.system('mkdir ' + dirPath + '/users')
+			os.mkdir(dirPath + '/data')
+			os.mkdir(dirPath + '/sample')
+			os.mkdir(dirPath + '/tables')
+			os.mkdir(dirPath + '/users')
 		except FileExistsError:
 			# 捕获 文件已经存在 错误
 			log.error(u'文件夹 %s 创建失败。' % (problem))
