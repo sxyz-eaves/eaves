@@ -35,9 +35,11 @@ def genProblem():
 		dirPath = os.getcwd() + '/' + problem
 		# 获取当前路径
 		if os.path.exists(dirPath):
-			ifDeleteFolder = input('文件夹 %s 已经存在，是否删除原文件夹[Y/n]？' % problem)
+			ifDeleteFolder = input('文件夹 %s 已经存在，你确定要继续并覆盖原文件吗[Y/n]？' % problem)
 			if ifDeleteFolder != 'n' and ifDeleteFolder != 'n':
 				shutil.rmtree(dirPath)
+			else:
+				exit()
 		try:
 			# 创建文件夹
 			shutil.copytree(sample, dirPath)
