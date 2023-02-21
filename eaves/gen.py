@@ -38,6 +38,10 @@ def genProblem():
 	for problem in sys.argv[2:]:
 		dirPath = os.getcwd() + '/' + problem
 		# 获取当前路径
+		if os.path.exists(dirPath):
+			ifDeleteFolder = input('文件夹' + problem + '已经存在，是否删除原文件夹[Y/n]？')
+			if ifDeleteFolder != 'n' and ifDeleteFolder != 'n':
+				shutil.rmtree(dirPath)
 		try:
 			# 创建文件夹
 			log.info(u'创建题目文件夹 %s' % (problem))
@@ -59,10 +63,7 @@ def genProblem():
 			os.system('mkdir ' + dirPath + '/users')
 		except FileExistsError:
 			# 捕获 文件已经存在 错误
-			log.error(u'题目文件夹 %s 创建失败。' % (problem))
-			ifDeleteFolder = input('文件夹' + problem + '已经存在，是否删除原文件夹[Y/n]？')
-			if ifDeleteFolder != 'n' and ifDeleteFolder != 'n':
-				shutil.rmtree(dirPath)
+			log.error(u'文件夹 %s 创建失败。' % (problem))
 
 if __name__ == '__main__':
 	base.init()
