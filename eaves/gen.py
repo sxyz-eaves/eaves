@@ -44,8 +44,8 @@ def genProblem():
 				shutil.rmtree(dirPath)
 		try:
 			# 创建文件夹
-			log.info(u'创建题目文件夹 %s' % (problem))
 			shutil.copytree(sample, dirPath)
+			log.info(u'创建题目文件夹 %s' % (problem))
 			problemConf = open(dirPath + '/conf.yaml', 'w')
 			problemConf.write('folder: problem\n')
 			problemConf.write('title: 题目名称\n')
