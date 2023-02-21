@@ -9,6 +9,10 @@ from . import base
 from .base import log
 
 def help():
+	log.info(u'版权声明\n' + 
+			 u'  版权所有 (C) 2023 SXYZ-EAVES 团队 保留一切权利\n' +
+			 u'  此程序遵循 GPL-3.0 许可协议 不包含任何担保\n' +
+			 u'  更详细的情况请参阅 GNU通用公共许可证条款\n')
 	log.info(u'Usage')
 	log.info(u'  help: 查询使用方法')
 	log.info(u'  contest: 将当前文件夹设置为比赛文件夹并生成文件。')
