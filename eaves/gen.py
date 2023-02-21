@@ -17,7 +17,7 @@ def help():
 
 def genContest():
 	if len(sys.argv) > 2:
-		extraParameter(sys.argv[3:])
+		base.extraParameter(sys.argv[3:])
 
 	shutil.copyfile(os.path.split(__file__)[0] + '/SampleContest/conf.yaml', os.getcwd() + '/conf.yaml')
 	log.info(u'创建 /conf.yaml')
