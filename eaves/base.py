@@ -11,7 +11,6 @@ import __main__
 log = logging.getLogger()
 # 使用 log 输出日志。
 
-
 def settingLog():
 	log.setLevel(logging.DEBUG)
 	# 设置 log 等级
@@ -28,12 +27,21 @@ def settingLog():
 	# file_log 将日志输出到文件中
 	log.addHandler(file_log)
 
-	bash_log = logging.StreamHandler()
-	bash_log.setLevel(logging.DEBUG)
-	bash_log.setFormatter(logging.Formatter('[%(levelname).1s]%(message)s'))
-	# bash_log 将日志输出到命令行
-	log.addHandler(bash_log)
+    file_log = logging.FileHandler(filename='eaves.log', mode='a')
+    file_log.setLevel(logging.INFO)
+    file_log.setFormatter(
+        logging.Formatter(
+            '[%(levelname).1s]%(filename)s:%(funcName)s:%(lineno)d:%(message)s'
+        )
+    )
+    # file_log 将日志输出到文件中
+    log.addHandler(file_log)
 
+    bash_log = logging.StreamHandler()
+    bash_log.setLevel(logging.DEBUG)
+    bash_log.setFormatter(logging.Formatter('[%(levelname).1s]%(message)s'))
+    # bash_log 将日志输出到命令行
+    log.addHandler(bash_log)
 
 def init():
 	settingLog()
