@@ -48,7 +48,7 @@ def unknownParameter(parameter):
 	log.error(
 		u'发现未知参数 %s，程序停止运行。请使用 \'eaves.%s help\' 查询使用方式。' % (
 			parameter,
-			os.splitext(os.path.split(__main__.__file__)[1])[0]
+			os.path.splitext(os.path.split(__main__.__file__)[1])[0]
 			# 把文件名切出来
 		)
 	)
