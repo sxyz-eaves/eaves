@@ -11,7 +11,7 @@ from .base import log
 def help():
 	license()
 	log.info(u'Usage')
-	log.info(u'  help: 查询使用方法')
+	log.info(u'  help: 显示版权声明及本帮助列表')
 	log.info(u'  contest: 将当前文件夹设置为比赛文件夹并生成文件。')
 	log.info(u'  problem <name1> <name2> ... : 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ...')
 
@@ -35,8 +35,8 @@ def genProblem():
 		dirPath = os.getcwd() + '/' + problem
 		# 获取当前路径
 		if os.path.exists(dirPath):
-			ifDeleteFolder = input('文件夹 %s 已经存在，是否删除原文件夹[Y/n]？' % problem)
-			if ifDeleteFolder != 'n' and ifDeleteFolder != 'n':
+			ifDeleteFolder = input('文件夹 %s 已经存在，你确定要继续并覆盖原文件吗[Y/n]？' % problem)
+			if ifDeleteFolder != 'n' and ifDeleteFolder != 'N':
 				shutil.rmtree(dirPath)
 		try:
 			# 创建文件夹
