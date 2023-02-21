@@ -1,0 +1,8 @@
+folder: problem
+title: 题目名称
+name: 
+data: {}
+memory limit: 512 MiB
+time limit: 1.0 s
+type: traditional
+checker: False
