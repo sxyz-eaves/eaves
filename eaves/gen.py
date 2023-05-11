@@ -102,15 +102,17 @@ def md2latex():
     log.info("文件读取完毕，开始转换。")
     texContent = []
     tabs = 0
-    listCnt = [0]
-    listTab = [0]
+    unorderedListCnt = [0]
+    unorderedListTab = [0]
+    orderedListCnt = [0]
+    orderedListTab = [0]
     for mdLine, i in mdContent, range(len(mdContent)):
         if (int)((float)(i) / len(mdContent) * 100) % 10 == 0:
             log.info("正在处理第 %d / %d 行 " % (i) % len(mdContent))
         texLine = ""
         # 处理缩进
         # 匹配前缀空格
-        prefixSpaceRegex = regex.regex.Regex("^( )*")
+        prefixSpaceRegex = regex.compile("^( )*")
         prefixSpaceMatch = prefixSpaceRegex.match(mdLine)
         prefixSpaceResult = prefixSpaceMatch.capturesdict()
         # 转换为缩进值
@@ -119,9 +121,23 @@ def md2latex():
         for i in range(tabs):
             texLine = texLine + "\\ "
         # 处理列表
-        prefixUnorderedListRegex = regex.regex.Regex("[1-9]\.")
-        prefixUnorderedListMatch = prefixUnorderedListRegex.match(mdLine)
-        prefixUnorderedListResult = prefixUnorderedListMatch.capturesdict()
+        # 处理无序列表
+        # 匹配前缀列表符号
+        prefixUnorderedListRegex = regex.compile("[-, \*, \+]")
+        prefixUnorderedListMatch = prefixSpaceRegex.finditer(mdLine)
+        for prefixUnorderedListMatchItem in prefixUnorderedListMatch:
+            pos = prefixUnorderedListMatchItem.start()
+            log.debug("Found Unordered List Item on Position %d" % pos)
+            try:
+                log.debug("Add ListCnt")
+                find = unorderedListTab.index(pos)
+                unorderedListTab = unorderedListTab[0, find]
+                unorderedListCnt = unorderedListCnt[0, find]
+                unorderedListCnt[find] = unorderedListCnt[find] + 1
+            except ValueError:
+                log.debug("New List")
+                unorderedListTab.append(pos)
+                unorderedListCnt.append(1)
         # 将该行附加到结果
         texContent.append(texLine)
 
