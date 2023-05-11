@@ -19,7 +19,7 @@ def help():
         "  problem <name1> <name2> ... : 创建若干题目文件夹，文件夹名和题目英文名称为 <name1>, <name2>, ..."
     )
     log.info(
-        "  translate <filename> [outputname] : 转换md格式的题目为LaTeX格式，输入文件名为 <filename>, 输出文件名为 [outputname], 不指定则默认为 <filename>(去除后缀).tex"
+        "  translate <fileName> [outputName] : 转换md格式的题目为LaTeX格式，输入文件名为 <fileName>, 输出文件名为 [outputName], 不指定则默认为 <fileName>(去除后缀).tex"
     )
 
 
@@ -53,7 +53,7 @@ def genProblem():
         dirPath = os.getcwd() + "/" + problem
         # 获取当前路径
         if os.path.exists(dirPath):
-            ifDeleteFolder = input("文件夹 %s 已经存在，你确定要继续并覆盖原文件吗[Y/n]？" % problem)
+            ifDeleteFolder = input("文件夹 %s 已经存在，你确定要继续并覆盖原文件吗[Y/n]？" % (problem))
             if ifDeleteFolder != "n" and ifDeleteFolder != "N":
                 shutil.rmtree(dirPath)
         try:
@@ -83,13 +83,47 @@ def genProblem():
 def md2latex():
     if len(sys.argv) == 2:
         base.missingParameter()
-    filename = sys.argv[2]
+    fileName = sys.argv[2]
     if len(sys.argv) == 3:
-        outputname = filename
-        if outputname.rfind(".") != -1:
-            suffix = outputname[outputname.rfind("."), len(outputname)]
-            outputname.removesuffix(suffix)
-        outputname = outputname + ".tex"
+        outputName = fileName
+        if outputName.rfind(".") != -1:
+            suffix = outputName[outputName.rfind("."), len(outputName)]
+            outputName.removesuffix(suffix)
+        outputName = outputName + ".tex"
+    else:
+        outputName = sys.argv[3]
+    log.info("读取输入文件 %s" % (fileName))
+    filePath = os.getcwd() + "/" + fileName
+    if os.path.exists(filePath) == False:
+        log.error("文件 %s 不存在。" % (filePath))
+    mdFile = open(filePath, "r")
+    mdContent = mdFile.readlines()
+    mdFile.close()
+    log.info("文件读取完毕，开始转换。")
+    texContent = []
+    tabs = 0
+    listCnt = [0]
+    listTab = [0]
+    for mdLine, i in mdContent, range(len(mdContent)):
+        if (int)((float)(i) / len(mdContent) * 100) % 10 == 0:
+            log.info("正在处理第 %d / %d 行 " % (i) % len(mdContent))
+        texLine = ""
+        # 处理缩进
+        # 匹配前缀空格
+        prefixSpaceRegex = regex.regex.Regex("^( )*")
+        prefixSpaceMatch = prefixSpaceRegex.match(mdLine)
+        prefixSpaceResult = prefixSpaceMatch.capturesdict()
+        # 转换为缩进值
+        tabs = len(prefixSpaceResult[1])
+        # 向该行添加空格
+        for i in range(tabs):
+            texLine = texLine + "\\ "
+        # 处理列表
+        prefixUnorderedListRegex = regex.regex.Regex("[1-9]\.")
+        prefixUnorderedListMatch = prefixUnorderedListRegex.match(mdLine)
+        prefixUnorderedListResult = prefixUnorderedListMatch.capturesdict()
+        # 将该行附加到结果
+        texContent.append(texLine)
 
 
 if __name__ == "__main__":
